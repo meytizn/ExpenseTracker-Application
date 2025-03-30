@@ -1,13 +1,28 @@
 "use client"
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Transaction } from "./Transaction";
 
 export default function Home() {
 
-const [transactions,settransactions]=useState<Transaction[]>([])  //transaction_list
+// const [transactions,settransactions]=useState<Transaction[]>([])      //transaction_list without localstorage 
+
+const [transactions,settransactions]=useState<Transaction[]>(()=>{
+  const savedTrans = localStorage.getItem("transactions")
+  return savedTrans ? JSON.parse(savedTrans):[]
+})     
+
+
+
 const [text,settext]=useState("")
 const [amount,setamount]=useState("")
+
+
+
+// setlocal storage part1
+useEffect(()=>{
+  localStorage.setItem("transactions",JSON.stringify(transactions))
+},[transactions])
 
 
 
