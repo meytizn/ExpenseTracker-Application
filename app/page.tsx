@@ -138,7 +138,7 @@ transactions.map((item)=>{
 
              
 
-          <div className="absolute bottom-0 left-0 right-0 h-[230px] p-5 bg-gray-800 ">
+          <div className="absolute bottom-0 left-0 right-0 h-[300px] p-5 bg-gray-800 ">
             
             {transactions.map((item)=>(<div className={`${item.amount>0 ?"bg-green-800":"bg-red-600" } text-white flex flex-row md:w-[50%] md:m-auto justify-around items-center content-center  my-2 rounded-md h-[35px]`} key={item.id}>
              
@@ -147,7 +147,7 @@ transactions.map((item)=>{
               <div>$ {item.amount}</div>
 
 
-              <div onClick={()=>deleteTransaction(item.id)}><svg className="w-6 h-6 text-red-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+              <div onClick={()=>deleteTransaction(item.id)}><svg className="w-6 h-6 text-yellow-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 17.94 6M18 18 6.06 6"/>
               </svg>
               </div>
@@ -156,6 +156,12 @@ transactions.map((item)=>{
               </div>))}
 
           </div>
+
+
+
+<div className="fixed bottom-0 right-0 left-0 flex flex-row text-white  bg-red-800 h-[60px] justify-center content-center items-center  text-center text-[15px]"><a href="https://mahdizamanian.onrender.com/">created by Mahdi Zamanian</a></div>
+
+
 
 
       </>
