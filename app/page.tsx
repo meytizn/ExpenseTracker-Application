@@ -30,7 +30,7 @@ function addTransaction(){
     return alert("dont leave filed empty ")
   }
   else{
-    let newtransaction:Transaction={
+    const newtransaction:Transaction={
       id:Date.now(),
       text:text,
       amount:parseFloat(amount)
