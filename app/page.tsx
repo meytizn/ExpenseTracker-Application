@@ -35,6 +35,27 @@ function deleteTransaction(id:number){
   settransactions(transactions.filter((item)=> item.id!=id))
 }
 
+
+
+// balance counter
+let total = 0
+transactions.map((item)=>total+=item.amount)
+
+
+// income and expense counter
+let income = 0
+let expense = 0
+transactions.map((item)=>{
+  if(item.amount>0){
+    income+=item.amount
+  }
+  else{
+    expense+=item.amount
+  }
+})
+
+
+
   return (
       <>
  
@@ -51,13 +72,13 @@ function deleteTransaction(id:number){
 
 
             <div className="flex flex-col text-white  bg-gray-800 text-center text-[25px] my-10 gap-12  ">
-            <div className="w-[100%] text-green-500">balance : $ 800 </div>
+            <div className="w-[100%] text-white">balance : $ {total} </div>
           
 
 
-            <div className="flex flex-row justify-around items-center content-center">
-              <div>Income : </div>
-              <div>Expense : </div>
+            <div className="flex flex-row justify-around items-center content-center text-[20px]">
+              <div className="text-green-400">Income : $ {income}</div>
+              <div className="text-red-400">Expense : $ {expense} </div>
               </div>
 
 
@@ -97,11 +118,14 @@ function deleteTransaction(id:number){
 
 
 
+
+
+
              
 
-          <div className="absolute bottom-0 left-0 right-0 h-[230px] p-5 bg-indigo-500 ">
+          <div className="absolute bottom-0 left-0 right-0 h-[230px] p-5 bg-gray-800 ">
             
-            {transactions.map((item)=>(<div className=" flex flex-row md:w-[50%] md:m-auto justify-around items-center content-center bg-white my-2 rounded-md h-[35px]" key={item.id}>
+            {transactions.map((item)=>(<div className={`${item.amount>0 ?"bg-green-800":"bg-red-600" } text-white flex flex-row md:w-[50%] md:m-auto justify-around items-center content-center  my-2 rounded-md h-[35px]`} key={item.id}>
              
               <div>{item.text}</div>
              
